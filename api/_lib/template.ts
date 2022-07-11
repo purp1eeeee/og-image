@@ -101,7 +101,7 @@ function getCss(theme: string, fontSize: string) {
     .meta {
         font-size: 75px;
         display: flex;
-        justfy-content: flex-end;
+        justify-content: end;
         align-items: center;
         font-weight: bold;
     }
