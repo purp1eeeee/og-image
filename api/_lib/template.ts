@@ -51,6 +51,7 @@ function getCss(theme: string, fontSize: string) {
       }
 
     body {
+        font-family: 'Noto Sans JP', sans-serif;
         background: ${background};
         background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
         background-size: 100px 100px;
@@ -92,11 +93,17 @@ function getCss(theme: string, fontSize: string) {
     }
     
     .heading {
-        font-family: 'Noto Sans JP', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
         line-height: 1.8;
+    }
+    .meta {
+        font-size: 75px;
+        display: flex;
+        justfy-content: flex-end;
+        align-items: center;
+        font-weight: bold;
     }
     `
 }
@@ -119,7 +126,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             )}
             </div>
             <div class="spacer">
-            <div>
+            <div class="meta">
                 ${emojify(`🟣 murasak1.com`)}
             </div>
         </div>
