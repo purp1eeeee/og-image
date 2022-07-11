@@ -19,12 +19,10 @@ const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
 function getCss(theme: string, fontSize: string) {
   let background = "white"
   let foreground = "black"
-  let radial = "lightgray"
 
   if (theme === "dark") {
     background = "black"
     foreground = "white"
-    radial = "dimgray"
   }
   return `
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
@@ -53,13 +51,11 @@ function getCss(theme: string, fontSize: string) {
     body {
         font-family: 'Noto Sans JP', sans-serif;
         background: ${background};
-        background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
-        background-size: 100px 100px;
         height: 100vh;
+        padding: 60px;
         display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     code {
@@ -73,18 +69,6 @@ function getCss(theme: string, fontSize: string) {
         content: '\`';
     }
 
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .spacer {
-        margin: 150px;
-    }
-
     .emoji {
         height: 1em;
         width: 1em;
@@ -94,16 +78,20 @@ function getCss(theme: string, fontSize: string) {
     
     .heading {
         font-size: ${sanitizeHtml(fontSize)};
-        font-style: normal;
+        font-weight: bold;
         color: ${foreground};
         line-height: 1.8;
+        text-align: center;
+        padding-top: 280px;
     }
     .meta {
-        font-size: 75px;
-        display: flex;
-        justify-content: end;
-        align-items: center;
+        font-size: 60px;
+        text-align: right;
         font-weight: bold;
+        padding-bottom: 82px;
+    }
+    
+    .logo {
     }
     `
 }
@@ -119,17 +107,14 @@ export function getHtml(parsedReq: ParsedRequest) {
         ${getCss(theme, fontSize)}
     </style>
     <body>
-        <div>
-            <div class="spacer">
             <div class="heading">${emojify(
               md ? marked(text) : sanitizeHtml(text)
             )}
             </div>
-            <div class="spacer">
-            <div class="meta">
-                ${emojify(`🟣 murasak1.com`)}
-            </div>
-        </div>
+            <p class="meta">
+            <span class="logo">${emojify(`🟣`)}</span>
+                ${emojify(`murasak1.com`)}
+            </p>
     </body>
 </html>`
 }
