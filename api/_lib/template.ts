@@ -80,16 +80,6 @@ function getCss(theme: string, fontSize: string) {
         justify-items: center;
     }
 
-    .logo {
-        margin: 0 75px;
-    }
-
-    .plus {
-        color: #BBB;
-        font-family: Times New Roman, Verdana;
-        font-size: 100px;
-    }
-
     .spacer {
         margin: 150px;
     }
@@ -107,7 +97,8 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         color: ${foreground};
         line-height: 1.8;
-    }`
+    }
+    `
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
@@ -126,6 +117,10 @@ export function getHtml(parsedReq: ParsedRequest) {
             <div class="heading">${emojify(
               md ? marked(text) : sanitizeHtml(text)
             )}
+            </div>
+            <div class="spacer">
+            <div>
+                ${emojify(`🟣 murasak1.com`)}
             </div>
         </div>
     </body>
