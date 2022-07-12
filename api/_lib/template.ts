@@ -82,7 +82,7 @@ function getCss(theme: string, fontSize: string) {
         color: ${foreground};
         line-height: 1.8;
         text-align: center;
-        padding-top: 280px;
+        padding-top: 380px;
     }
     .meta {
         font-size: 60px;
